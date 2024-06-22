@@ -6,7 +6,7 @@
 /*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:30 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/06/20 16:26:08 by ysirkich@st      ###   ########.fr       */
+/*   Updated: 2024/06/22 13:12:37 by ysirkich@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,5 @@ typedef struct the_stack
 	struct	the_stack	*next;
 	struct the_stack	*prev;
 }   t_stack
+
+#endif
