@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
+/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/22 15:17:04 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/06/22 15:20:04 by ysirkich@st      ###   ########.fr       */
+/*   Created: 2024/07/02 14:42:13 by ysirkich          #+#    #+#             */
+/*   Updated: 2024/07/02 14:42:30 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

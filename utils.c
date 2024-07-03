@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
+/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:59 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/06/20 16:26:07 by ysirkich@st      ###   ########.fr       */
+/*   Updated: 2024/07/03 02:13:06 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,15 @@ int	ft_atoi(const char *str)
 			return (-1);
 	}
 	return (result * sign);
+}
+
+int ft_print_error(char *text)
+{
+	int i;
+	while(text[i])
+	{
+		write(1, &i, 1);
+		i++;
+	}
+	return (-1);
 }

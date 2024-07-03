@@ -3,43 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
+/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:24:57 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/06/23 19:20:07 by ysirkich@st      ###   ########.fr       */
+/*   Updated: 2024/07/03 02:10:16 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	ft_lstsize(t_stack *lst)
+int	ft_lstsize(t_stack *stack)
 {
 	int	count;
 
 	count = 0;
-	while (lst != NULL)
+	while (stack)
 	{
 		count++;
-		lst = lst->next;
+		stack = stack->next;
 	}
 	return (count);
 }
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_stack **stack, t_stack *new_node)
 {
 	t_stack	*lptr;
 
-	if (!lst || !new)
+	if (!stack || !new_node)
 		return ;
-	if (!*lst)
+	if (!*stack)
 	{
-		*lst = new;
+		*stack = new_node;
 		return ;
 	}
-	lptr = *lst;
-	while (lptr->next != NULL)
+	lptr = *stack;
+	while (lptr->next)
 		lptr = lptr->next;
-	lptr->next = new;
+	lptr->next = new_node;
+	new_node->prev = lptr;
 }
 
 t_stack	*ft_lstnew(int *value)
@@ -51,5 +52,24 @@ t_stack	*ft_lstnew(int *value)
 		return (NULL);
 	new->value = value;
 	new->next = NULL;
+	new->prev = NULL;
 	return (new);
+}
+
+void ft_lst_free(t_stack **stack)
+{
+	t_stack *lptr;
+
+	while (*stack)
+	{
+		lptr = (*stack)->next;
+		free(*stack);
+		*stack = lptr;
+	}
+	*stack = NULL;
+}
+
+void	ft_lst_split(t_stack **a, t_stack **b, int size)
+{
+	
 }

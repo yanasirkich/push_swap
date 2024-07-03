@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
+/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/06/23 19:29:34 by ysirkich@st      ###   ########.fr       */
+/*   Updated: 2024/07/02 19:49:31 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ int	main (int argc, char **argv)
 	b = NULL;
 	//size = 0;
 	if (argc < 2)
-		return (0); //maybe error handling
+		return (-1); //maybe error handling
 	else
 		ft_argument_check(argc, argv, &a);
 	size = ft_lstsize(a);
 	if (size < 2)
-		return (0); //error handling
+	{
+		ft_lst_free(&a);
+		return (-1); //error handling
+	}
 	ft_lst_split(&a, &b, size); //split and sort the list
 	ft_lst_free(&a);
 	ft_lst_free(&b);
@@ -46,7 +49,7 @@ void ft_argument_check(int argc, char **argv, t_stack **a)
 		argument = ft_split(argv[1], ' ');
 		while (argv[count])
 			count++;
-		ft_print_lst(count, argument, a)
+		ft_print_lst(a, count, argument);
 		free(argument);
 	}
 	else
