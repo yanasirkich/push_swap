@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/03 04:57:31 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:07:28 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_swap(t_stack **stack)
 	t_stack *first;
 	t_stack *second;
 
-	if (!(*stack->next))
+	if (!(*stack)->next)
 		ft_print_error("Error while swapping: stack only has 1 element.");
 	if (!stack || !*stack)
 		ft_print_error("Error while swapping: stack pointer or stack is empty.");
@@ -48,7 +48,7 @@ int	ft_push(t_stack **source_stack, t_stack **dest_stack)
 	if (!*source_stack)
 		ft_print_error("Error while pushing: Empty stack.");
 	//*source_stack = ft_first_node(*source_stack);
-	//*dest_stack = ft_first_node(dest_stack);
+	//*dest_stack = ft_first_node(*dest_stack);
 	top_of_source = *source_stack;
 	*source_stack = (*source_stack)->next;
 	if (*source_stack)
@@ -60,13 +60,38 @@ int	ft_push(t_stack **source_stack, t_stack **dest_stack)
 	return (0);
 }
 
-int	ft_rotate(t_stack **stack, int reverse)
+int	ft_rotate(t_stack **stack, int rotate)
 {
-	int	top_node;
+	t_stack	*first;
+	t_stack	*last;
 	
 	if (!(*stack)->next)
 		ft_print_error("Error while rotating: stack only has 1 element.");
 	if (!stack || !*stack)
 		ft_print_error("Error while rotating: stack pointer or stack is empty.");
-	top_node = *stack;
+	//first = ft_first_node(*stack);
+	first = *stack;
+	last = ft_last_node(*stack);
+	if (!rotate) //forward rotation. the first node to the end
+	{
+		*stack = first->next;
+		(*stack)->prev = NULL;
+		first->next = NULL;
+		last->next = first;
+		first->prev = last;
+	}
+	else if (rotate) //reverse rotation. the last node to the front
+	{
+		*stack = last;
+		last->prev->next = NULL;
+		last->prev = NULL;
+		last->next = first;
+		first->prev = last;
+	}
+	return (0);
+}
+
+int	ft_instructions(t_stack **a, t_stack **b, char *command) //something like ft_format in printf lol
+{
+	
 }

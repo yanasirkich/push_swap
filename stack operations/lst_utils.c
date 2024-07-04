@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:24:57 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/03 02:10:16 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:33:02 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,4 @@ void ft_lst_free(t_stack **stack)
 		*stack = lptr;
 	}
 	*stack = NULL;
-}
-
-void	ft_lst_split(t_stack **a, t_stack **b, int size)
-{
-	
 }

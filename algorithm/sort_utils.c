@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 15:23:30 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/04 19:08:29 by ysirkich         ###   ########.fr       */
+/*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
+/*   Updated: 2024/07/04 19:05:01 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-
-typedef struct s_stack
+int	ft_sorted_lst(t_stack *a)
 {
-	int	value;
-	int	index;
-	struct	the_stack	*next;
-	struct the_stack	*prev;
-}   t_stack;
+	t_stack	top_node;
 
-
-#endif
+	if (!a)
+		ft_print_error("Error while sorting");
+	top_node = ft_first_node(a);
+	
+}
