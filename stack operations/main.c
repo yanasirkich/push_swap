@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/04 18:36:19 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:13:57 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main (int argc, char **argv)
 		ft_lst_free(&a);
 		return (-1); //error handling
 	}
-	ft_push_swap(&a, &b, size); //split and sort the list
+	ft_push_swap(&a, &b, size); // sort the list
 	ft_lst_free(&a);
 	ft_lst_free(&b);
 	return (0);
