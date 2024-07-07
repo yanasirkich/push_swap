@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:30 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/04 19:08:29 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/08 02:09:20 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 typedef struct s_stack
 {
 	int	value;
-	int	index;
 	struct	the_stack	*next;
 	struct the_stack	*prev;
 }   t_stack;
