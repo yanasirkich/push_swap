@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
+/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/08 11:50:48 by ysirkich@st      ###   ########.fr       */
+/*   Updated: 2024/07/08 15:32:23 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_push_swap(t_stack *a, t_stack *b, int size)
 	if (size == 0)
 		ft_print_error("something idk");
 	if (ft_sorted_lst(a)) //check if stack is sorted already
-		ft_print_error("Error. The list is sorted already.");
+		return (ft_print_error("Error. The list is sorted already."));
 	if (size == 2)
 		ft_instructions(&a, &b, "sa");
 	else if (size == 3)
@@ -65,8 +65,14 @@ void	ft_three_sort(t_stack **a)
 }
 
 void	ft_small_sort(t_stack *a, t_stack *b, int size)
-{// push 2 smallest number to stack b, sort 3 stack a, push back to stack a
-
+{// push 2 smallest number to stack b, sort the stack a, push back to stack a
+	while (size > 3)
+	{
+		// adjust position of min/max elements in stack a
+		//push top element from stack a to stack b
+	}
+	ft_three_sort(a);
+	ft_execute(&a, &b, "pa", size - 3);	
 }
 
 void	ft_sort(t_stack *a, t_stack *b)

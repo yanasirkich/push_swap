@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
+/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/08 11:48:56 by ysirkich@st      ###   ########.fr       */
+/*   Updated: 2024/07/08 13:50:19 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,14 @@ int	ft_instructions(t_stack **a, t_stack **b, char *command) //something like ft
 	if (ft_strcmp(line, "rrr"))
 		return (ft_rotate(b, 1) && ft_rotate(b, 1));
 	return (0);
+}
+
+void	ft_execute(t_stack **a, t_stack **b, char *command, int times)
+{ //do the same command multiple times
+	 while (times > 0)
+	 {
+		if (!ft_instructions(a, b, command))
+			return (ft_print_error("Error. something"));
+		times--;
+	 }
 }
