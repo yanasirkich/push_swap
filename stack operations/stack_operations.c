@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/04 19:07:28 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:48:56 by ysirkich@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,28 @@ int	ft_rotate(t_stack **stack, int rotate)
 
 int	ft_instructions(t_stack **a, t_stack **b, char *command) //something like ft_format in printf lol
 {
-	
+	ft_printf("%s\n", line);
+	if (ft_strcmp(line, "sa") == 0)
+		return (ft_swap(a));
+	if (ft_strcmp(line, "sb") == 0)
+		return (ft_swap(b));
+	if (ft_strcmp(line, "ss") == 0)
+		return (ft_swap(a) && ft_swap(b));
+	if (ft_strcmp(line, "pa") == 0)
+		return (ft_push(b, a));
+	if (ft_strcmp(line, "pb") == 0)
+		return (ft_push(a, b));
+	if (ft_strcmp(line, "ra") == 0)
+		return (ft_rotate(a, 0));
+	if (ft_strcmp(line, "rb" == 0))
+		return (ft_rotate(b, 0));
+	if (ft_strcmp(line, "rr") == 0)
+		return (ft_rotate(a, 0) && ft_rotate(b, 0));
+	if (ft_strcmp(line, "rra"))
+		return (ft_rotate(a, 1));
+	if (ft_strcmp(line, "rrb"))
+		ft_rotate(b, 1);
+	if (ft_strcmp(line, "rrr"))
+		return (ft_rotate(b, 1) && ft_rotate(b, 1));
+	return (0);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:59 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/04 18:31:20 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:52:37 by ysirkich@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 int ft_print_error(char *text)
 {

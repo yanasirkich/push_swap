@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:24:57 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/04 18:33:02 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:52:15 by ysirkich@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 int	ft_lstsize(t_stack *stack)
 {

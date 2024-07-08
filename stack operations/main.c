@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/05 17:13:57 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:50:03 by ysirkich@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main (int argc, char **argv)
 	if (size < 2)
 	{
 		ft_lst_free(&a);
-		return (-1); //error handling
+		return (ft_print_error("something")); //error handling
 	}
 	ft_push_swap(&a, &b, size); // sort the list
 	ft_lst_free(&a);

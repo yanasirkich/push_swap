@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/08 02:11:15 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:50:48 by ysirkich@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_push_swap(t_stack *a, t_stack *b, int size)
 	if (size == 0)
 		ft_print_error("something idk");
 	if (ft_sorted_lst(a)) //check if stack is sorted already
-		ft_print_error("The list is sorted already.");
+		ft_print_error("Error. The list is sorted already.");
 	if (size == 2)
 		ft_instructions(&a, &b, "sa");
 	else if (size == 3)
