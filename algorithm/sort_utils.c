@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/08 17:14:00 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/15 16:43:57 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_sorted_lst(t_stack *a)
 	return (1); //sorted
 }
 
-int	find_element_position(t_stack *stack, int minmax)
+int	ft_find_element_position(t_stack *stack, int minmax)
 { //the position of min or max element
 	t_stack	*node;
 	int	value;
@@ -40,7 +40,29 @@ int	find_element_position(t_stack *stack, int minmax)
 
 	
 }
-int	find_element_value(t_stack *stack, int minmax)
+int	ft_find_element_value(t_stack *stack, int minmax)
 { //the value of min or max element
+	
+}
 
+void	ft_push_smallest(t_stack **a, t_stack **b, int size)
+{
+	int	i;
+	int	min_i;
+	t_stack *current;
+
+	while (size-- > 0)
+	{ //the index of the smallest element
+		current = *a;
+		i = 0;
+		while (current)
+		{
+			if (current->value < (*a)->value)
+				min_i = i;
+			current = current->next;
+			i++;
+		}
+		//the smallest element to the top and push to stack
+		if (min_i)
+	}
 }

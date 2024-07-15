@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/08 15:32:23 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:53:34 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,22 @@ void	ft_three_sort(t_stack **a)
 	{
 		ft_instructions(a, NULL, "sa");
 		ft_instructions(a, NULL, "ra");
-
 	}
 	//5. third > first > second
 	if (third->value > first->value && first->value > second->value)
 		ft_instructions(a, NULL, "rra");
 }
 
-void	ft_small_sort(t_stack *a, t_stack *b, int size)
+void	ft_small_sort(t_stack **a, t_stack **b, int size)
 {// push 2 smallest number to stack b, sort the stack a, push back to stack a
-	while (size > 3)
-	{
-		// adjust position of min/max elements in stack a
-		//push top element from stack a to stack b
-	}
+	if (size == 4)
+		ft_push_smallest(a, b, 1);
+	else if (size == 5)
+		ft_push_smallest(a, b, 2);
 	ft_three_sort(a);
-	ft_execute(&a, &b, "pa", size - 3);	
+	if (size == 5)
+		ft_instructions(a, b, "pa");
+	ft_instructions(a, b, "pa");
 }
 
 void	ft_sort(t_stack *a, t_stack *b)
