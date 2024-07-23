@@ -6,13 +6,13 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/15 15:53:34 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/23 23:34:27 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push_swap(t_stack *a, t_stack *b, int size)
+void	ft_push_swap(t_stack **a, t_stack **b, int size)
 {
 	//a = ft_first_node(a);
 	if (size == 0)
@@ -20,9 +20,9 @@ void	ft_push_swap(t_stack *a, t_stack *b, int size)
 	if (ft_sorted_lst(a)) //check if stack is sorted already
 		return (ft_print_error("Error. The list is sorted already."));
 	if (size == 2)
-		ft_instructions(&a, &b, "sa");
+		ft_instructions(a, b, "sa");
 	else if (size == 3)
-		ft_three_sort(a);
+		ft_three_sort(*a);
 	else if (size == 4 || size == 5)
 		ft_small_sort(a, b, size);
 	else
@@ -75,7 +75,18 @@ void	ft_small_sort(t_stack **a, t_stack **b, int size)
 	ft_instructions(a, b, "pa");
 }
 
-void	ft_sort(t_stack *a, t_stack *b)
+void	ft_sort(t_stack **a, t_stack **b, int size)
 {
+	int	length;
+
+	length = size;
+	while (length > 3)
+	{
+		ft_push_smallest(a, b, length);
+		length--;
+	}
+	ft_three_sort(*a);
+	while(*b)
+		ft_instructions (a, b, "pa");
 	
 }

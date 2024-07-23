@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/15 16:43:57 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:18:05 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,41 +28,36 @@ int	ft_sorted_lst(t_stack *a)
 	return (1); //sorted
 }
 
-int	ft_find_element_position(t_stack *stack, int minmax)
-{ //the position of min or max element
-	t_stack	*node;
-	int	value;
-
-	node = ft_first_node(stack);
-	if (!node)
-		return (ft_error("Error. something"));
-	value = node->next;
-
-	
-}
-int	ft_find_element_value(t_stack *stack, int minmax)
-{ //the value of min or max element
-	
-}
-
 void	ft_push_smallest(t_stack **a, t_stack **b, int size)
 {
-	int	i;
-	int	min_i;
+	int	index;
+	int	min_index;
+	int	min_value;
 	t_stack *current;
 
-	while (size-- > 0)
-	{ //the index of the smallest element
-		current = *a;
-		i = 0;
-		while (current)
+	current = *a;
+	index = 0;
+	min_index = 0;
+	while (current)
+	{ //the index of the smallest element in the stack
+		if (current->value < min_value)
 		{
-			if (current->value < (*a)->value)
-				min_i = i;
-			current = current->next;
-			i++;
+			min_value = current->value;
+			min_index = index;
 		}
-		//the smallest element to the top and push to stack
-		if (min_i)
+		current = current->next;
+		index++;
 	}
+	//the smallest element to the top and push to stack
+		if (min_index <= size / 2)
+		{
+			while (min_index-- > 0)
+				ft_instructions(a, b, "ra");
+		}
+		else
+			{
+				while(min_index++ < size)
+					ft_instructions(a, b, "rra");
+			}
+			ft_instructioms(a, b, "pb");
 }

@@ -6,14 +6,13 @@
 #    By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/02 14:41:58 by ysirkich          #+#    #+#              #
-#    Updated: 2024/07/08 13:34:17 by ysirkich         ###   ########.fr        #
+#    Updated: 2024/07/19 15:39:24 by ysirkich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler
 
 NAME = push_swap
-#BONUS = 
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror

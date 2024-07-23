@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/08 13:50:19 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:39:09 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_rotate(t_stack **stack, int rotate)
 	return (0);
 }
 
-int	ft_instructions(t_stack **a, t_stack **b, char *command) //something like ft_format in printf lol
+int	ft_instructions(t_stack **a, t_stack **b, char *line) //something like ft_format in printf lol
 {
 	ft_printf("%s\n", line);
 	if (ft_strcmp(line, "sa") == 0)
