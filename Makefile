@@ -6,7 +6,7 @@
 #    By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/02 14:41:58 by ysirkich          #+#    #+#              #
-#    Updated: 2024/07/19 15:39:24 by ysirkich         ###   ########.fr        #
+#    Updated: 2024/07/24 23:23:15 by ysirkich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,11 @@ PRINTF_DIR = ./printf
 LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
+# Source
+ALGORITHM_DIR =	algorithm
+STACK_DIR = stack
+SRC_DIR	=	src
+
 # Rues 
 
 all	:	$(NAME)
@@ -36,3 +41,17 @@ $(LIBFT):
 	$(MAKE)	-C	$(LIBFT_DIR)
 $(PRINTF):
 	 $(MAKE)	-C	$(LIBFT_DIR)
+
+clean:
+	$(RM)	$(OBJS)
+	$(MAKE)	-C	$(LIBFT_DIR) clean
+	$(MAKE) -C $(PRINTF_DIR) clean
+
+fclean:
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(PRINTF_DIR) fclean
+
+re: fclean all
+
+.PHONY: all clean fclean re $(LIBFT) $(PRINTF)

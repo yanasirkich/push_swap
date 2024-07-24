@@ -6,26 +6,26 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/19 15:39:09 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/24 23:23:59 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_swap(t_stack **stack)
+static int	swap(t_stack **stack)
 {
 	t_stack *first;
 	t_stack *second;
 
 	if (!(*stack)->next)
-		ft_print_error("Error while swapping: stack only has 1 element.");
+		error("Error while swapping: stack only has 1 element.");
 	if (!stack || !*stack)
-		ft_print_error("Error while swapping: stack pointer or stack is empty.");
+		error("Error while swapping: stack pointer or stack is empty.");
 	//*stack = ft_first_node(*stack);
 	first = *stack;
 	second = first->next;
 	if (!first || !second)
-		ft_print_error("Error while swapping.");
+		error("Error while swapping.");
 	if (second->next)
 		second->next->prev = first;
 	first->next = second->next;
@@ -39,7 +39,7 @@ int	ft_swap(t_stack **stack)
 	return (0);
 }
 
-int	ft_push(t_stack **source_stack, t_stack **dest_stack)
+static int	push(t_stack **source_stack, t_stack **dest_stack)
 {
 	t_stack	*top_of_source;
 
@@ -47,8 +47,8 @@ int	ft_push(t_stack **source_stack, t_stack **dest_stack)
 		ft_print_error("Error while pushing: NULL pointers");
 	if (!*source_stack)
 		ft_print_error("Error while pushing: Empty stack.");
-	//*source_stack = ft_first_node(*source_stack);
-	//*dest_stack = ft_first_node(*dest_stack);
+	*source_stack = ft_first_node(*source_stack);
+	*dest_stack = ft_first_node(*dest_stack);
 	top_of_source = *source_stack;
 	*source_stack = (*source_stack)->next;
 	if (*source_stack)
@@ -60,15 +60,15 @@ int	ft_push(t_stack **source_stack, t_stack **dest_stack)
 	return (0);
 }
 
-int	ft_rotate(t_stack **stack, int rotate)
+static int	rotate(t_stack **stack, int rotate)
 {
 	t_stack	*first;
 	t_stack	*last;
 	
 	if (!(*stack)->next)
-		ft_print_error("Error while rotating: stack only has 1 element.");
+		error("Error while rotating: stack only has 1 element.");
 	if (!stack || !*stack)
-		ft_print_error("Error while rotating: stack pointer or stack is empty.");
+		error("Error while rotating: stack pointer or stack is empty.");
 	//first = ft_first_node(*stack);
 	first = *stack;
 	last = ft_last_node(*stack);
@@ -91,40 +91,40 @@ int	ft_rotate(t_stack **stack, int rotate)
 	return (0);
 }
 
-int	ft_instructions(t_stack **a, t_stack **b, char *line) //something like ft_format in printf lol
+int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //something like ft_format in printf lol
 {
-	ft_printf("%s\n", line);
-	if (ft_strcmp(line, "sa") == 0)
-		return (ft_swap(a));
-	if (ft_strcmp(line, "sb") == 0)
-		return (ft_swap(b));
-	if (ft_strcmp(line, "ss") == 0)
-		return (ft_swap(a) && ft_swap(b));
-	if (ft_strcmp(line, "pa") == 0)
-		return (ft_push(b, a));
-	if (ft_strcmp(line, "pb") == 0)
-		return (ft_push(a, b));
-	if (ft_strcmp(line, "ra") == 0)
-		return (ft_rotate(a, 0));
-	if (ft_strcmp(line, "rb" == 0))
-		return (ft_rotate(b, 0));
-	if (ft_strcmp(line, "rr") == 0)
-		return (ft_rotate(a, 0) && ft_rotate(b, 0));
-	if (ft_strcmp(line, "rra"))
-		return (ft_rotate(a, 1));
-	if (ft_strcmp(line, "rrb"))
-		ft_rotate(b, 1);
-	if (ft_strcmp(line, "rrr"))
-		return (ft_rotate(b, 1) && ft_rotate(b, 1));
+	ft_printf("%s\n", command);
+	if (ft_strcmp(command, "sa") == 0)
+		return (swap(stack_a));
+	if (ft_strcmp(command, "sb") == 0)
+		return (swap(stack_b));
+	if (ft_strcmp(command, "ss") == 0)
+		return (swap(stack_a) && ft_swap(stack_b));
+	if (ft_strcmp(command, "pa") == 0)
+		return (push(stack_b, stack_a));
+	if (ft_strcmp(command, "pb") == 0)
+		return (push(stack_a, stack_b));
+	if (ft_strcmp(command, "ra") == 0)
+		return (rotate(stack_a, 0));
+	if (ft_strcmp(command, "rb" == 0))
+		return (rotate(stack_b, 0));
+	if (ft_strcmp(command, "rr") == 0)
+		return (rotate(stack_a, 0) && rotate(stack_b, 0));
+	if (ft_strcmp(command, "rra"))
+		return (rotate(stack_a, 1));
+	if (ft_strcmp(command, "rrb"))
+		return (rotate(stack_b, 1));
+	if (ft_strcmp(command, "rrr"))
+		return (rotate(stack_b, 1) && rotate(stack_b, 1));
 	return (0);
 }
 
-void	ft_execute(t_stack **a, t_stack **b, char *command, int times)
+void	execute(t_stack **stack_a, t_stack **stack_b, char *command, int times)
 { //do the same command multiple times
 	 while (times > 0)
 	 {
-		if (!ft_instructions(a, b, command))
-			return (ft_print_error("Error. something"));
+		if (!instructions(stack_a, stack_b, command))
+			return (error("Error. something"));
 		times--;
 	 }
 }

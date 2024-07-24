@@ -6,19 +6,19 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/22 17:18:05 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:48:07 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sorted_lst(t_stack *a)
+int	sorted_lst(t_stack *stack_a)
 { //checks if the list is sorted in in ascending order
 	t_stack	*top_node;
 
-	if (!a)
+	if (!stack_a)
 		return (ft_print_error("Error while sorting"));
-	top_node = ft_first_node(a);
+	top_node = ft_first_node(stack_a);
 	while (top_node->next)
 	{
 		if (top_node->value > top_node->next->value)
@@ -28,14 +28,14 @@ int	ft_sorted_lst(t_stack *a)
 	return (1); //sorted
 }
 
-void	ft_push_smallest(t_stack **a, t_stack **b, int size)
+void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int	index;
 	int	min_index;
 	int	min_value;
 	t_stack *current;
 
-	current = *a;
+	current = *stack_a;
 	index = 0;
 	min_index = 0;
 	while (current)
@@ -52,12 +52,12 @@ void	ft_push_smallest(t_stack **a, t_stack **b, int size)
 		if (min_index <= size / 2)
 		{
 			while (min_index-- > 0)
-				ft_instructions(a, b, "ra");
+				instructions(stack_a, stack_b, "ra");
 		}
 		else
 			{
 				while(min_index++ < size)
-					ft_instructions(a, b, "rra");
+					instructions(stack_a, stack_b, "rra");
 			}
-			ft_instructioms(a, b, "pb");
+			instructioms(stack_a, stack_b, "pb");
 }

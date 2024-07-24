@@ -3,41 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
+/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/08 11:50:03 by ysirkich@st      ###   ########.fr       */
+/*   Updated: 2024/07/24 23:22:06 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void populate_lst(t_stack **stack_a, int count, char **args);
+static void argument_check(int argc, char **argv, t_stack **stack_a);
+
 int	main (int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack *b;
+	t_stack	*stack_a;
+	t_stack *stack_b;
 	int	size;
 
-	a = NULL;
-	b = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	//size = 0;
 	if (argc < 2)
-		ft_print_error("Error: not enough arguments.");
+		error("Error: not enough arguments.");
 	else
-		ft_argument_check(argc, argv, &a);
-	size = ft_lstsize(a);
+		argument_check(argc, argv, &stack_a);
+	size = ft_lstsize(stack_a);
 	if (size < 2)
 	{
-		ft_lst_free(&a);
-		return (ft_print_error("something")); //error handling
+		ft_lst_free(&stack_a);
+		return (error("something")); //error handling
 	}
-	ft_push_swap(&a, &b, size); // sort the list
-	ft_lst_free(&a);
-	ft_lst_free(&b);
+	push_swap(&stack_a, &stack_b, size); // sort the list
+	ft_lst_free(&stack_a);
+	ft_lst_free(&stack_b);
 	return (0);
 }
 
-void ft_argument_check(int argc, char **argv, t_stack **a)
+static void argument_check(int argc, char **argv, t_stack **stack_a)
 { //checks the arguments and populates stack a
 	char **argument;
 	int	count;
@@ -49,23 +52,29 @@ void ft_argument_check(int argc, char **argv, t_stack **a)
 		argument = ft_split(argv[1], ' ');
 		while (argv[count])
 			count++;
-		ft_populate_lst(a, count, argument);
+		populate_lst(stack_a, count, argument);
 		free(argument);
 	}
 	else //separate strings
-		ft_populate_lst(count, argc - 1, argv + 1); // skip the program name
+		populate_lst(count, argc - 1, argv + 1); // skip the program name
 }
 
-void ft_populate_lst(t_stack **a, int count, char **args)
+static void populate_lst(t_stack **stack_a, int count, char **args)
 { //converts the array of strings into a linked lis
-	int i;
+	int index;
 	t_stack	*new_node;
 
-	i = 0;
-	while (i < count)
+	index = 0;
+	while (index < count)
 	{
-		new_node = ft_lstnew(ft_atoi(args[i]));
-		ft_lstadd_back(a, new_node);
-		i++;
+		new_node = ft_lstnew(ft_atoi(args[index]));
+		ft_lstadd_back(stack_a, new_node);
+		index++;
 	}
+}
+
+int error(char *text)
+{
+	ft_printf("%s", text);
+	return (-1);
 }
