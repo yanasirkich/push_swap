@@ -6,7 +6,7 @@
 #    By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/02 14:41:58 by ysirkich          #+#    #+#              #
-#    Updated: 2024/07/26 16:55:16 by ysirkich         ###   ########.fr        #
+#    Updated: 2024/07/28 16:22:56 by ysirkich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ NAME = push_swap
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall	-Wextra	-Werror
-INCLUDE	=-I. -Iincludes -Ilibraries/ft_printf/includes -Ilibraries/libft/includes
+INCLUDE	=-I. -Iincludes -Ilibraries/printf -Ilibraries/libft
 
 # Libraries
 LIBFT_DIR = libraries/libft
-PRINTF_DIR = libraries/ft_printf
+PRINTF_DIR = libraries/printf
 
 LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a

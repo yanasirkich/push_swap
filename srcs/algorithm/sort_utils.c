@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/24 15:48:07 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/28 16:31:29 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	sorted_lst(t_stack *stack_a)
 	t_stack	*top_node;
 
 	if (!stack_a)
-		return (ft_print_error("Error while sorting"));
+		return (error("Error while sorting"));
 	top_node = ft_first_node(stack_a);
 	while (top_node->next)
 	{
