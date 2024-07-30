@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/29 19:07:45 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/30 03:32:31 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 	//a = ft_first_node(a);
 	if (size == 0)
 		error("something idk");
-	if (sorted_lst(*stack_a)) //check if stack is sorted already
+	if (sorted_lst(stack_a)) //check if stack is sorted already
 		error("Error. The list is sorted already.");
 	if (size == 2)
 		instructions(stack_a, stack_b, "sa");
