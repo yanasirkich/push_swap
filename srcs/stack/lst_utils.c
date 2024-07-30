@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysirkich@student.hive.fi <ysirkich@stud    +#+  +:+       +#+        */
+/*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:24:57 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/08 11:52:15 by ysirkich@st      ###   ########.fr       */
+/*   Updated: 2024/07/29 19:00:45 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_lstadd_back(t_stack **stack, t_stack *new_node)
 	new_node->prev = lptr;
 }
 
-t_stack	*ft_lstnew(int *value)
+t_stack	*ft_lstnew(int value)
 {
 	t_stack	*new;
 

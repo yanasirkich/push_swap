@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/10 14:45:33 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/05/10 14:45:37 by ysirkich         ###   ########.fr       */
+/*   Created: 2024/07/30 02:52:38 by ysirkich          #+#    #+#             */
+/*   Updated: 2024/07/30 02:56:18 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	else
-		return (0);
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

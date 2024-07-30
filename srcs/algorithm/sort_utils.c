@@ -6,19 +6,19 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/28 16:31:29 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:10:22 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sorted_lst(t_stack *stack_a)
+int	sorted_lst(t_stack **stack_a)
 { //checks if the list is sorted in in ascending order
 	t_stack	*top_node;
 
 	if (!stack_a)
 		return (error("Error while sorting"));
-	top_node = ft_first_node(stack_a);
+	top_node = ft_first_node(*stack_a);
 	while (top_node->next)
 	{
 		if (top_node->value > top_node->next->value)
@@ -59,5 +59,5 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 				while(min_index++ < size)
 					instructions(stack_a, stack_b, "rra");
 			}
-			instructioms(stack_a, stack_b, "pb");
+			instructions(stack_a, stack_b, "pb");
 }

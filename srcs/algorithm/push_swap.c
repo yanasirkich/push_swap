@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/24 16:11:04 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:07:45 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 	//a = ft_first_node(a);
 	if (size == 0)
 		error("something idk");
-	if (sorted_lst(stack_a)) //check if stack is sorted already
-		return (error("Error. The list is sorted already."));
+	if (sorted_lst(*stack_a)) //check if stack is sorted already
+		error("Error. The list is sorted already.");
 	if (size == 2)
 		instructions(stack_a, stack_b, "sa");
 	else if (size == 3)
-		three_sort(*stack_a);
+		three_sort(stack_a);
 	else if (size == 4 || size == 5)
 		small_sort(stack_a, stack_b, size);
 	else
@@ -88,7 +88,7 @@ static void	sort(t_stack **stack_a, t_stack **stack_b, int size)
 		push_smallest(stack_a, stack_b, length);
 		length--;
 	}
-	three_sort(*stack_a);
+	three_sort(stack_a);
 	while(*stack_b)
 		instructions(stack_a, stack_b, "pa");
 	if ((*stack_a)->value > (*stack_a)->next->value)

@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/10 14:43:57 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/05/10 14:44:03 by ysirkich         ###   ########.fr       */
+/*   Created: 2024/05/10 15:07:31 by ysirkich          #+#    #+#             */
+/*   Updated: 2024/07/30 03:27:32 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
-{
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'))
-		return (1);
-	else
-		return (0);
-}
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+
+int			ft_atoi(const char *str);
+int			ft_strcmp(const char *s1, const char *s2);
+void		ft_putstr_fd(char *s, int fd);
+char	*ft_substr(char const *s, unsigned int start,
+size_t len);
+char	*ft_strdup(const char *s1);
+size_t	ft_strlen(const char *str);
+char	**ft_split(char const *s, char c);
+
+#endif

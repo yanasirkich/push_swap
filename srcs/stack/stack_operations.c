@@ -6,11 +6,12 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/24 23:23:59 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/30 03:09:03 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
 static int	swap(t_stack **stack)
 {
@@ -44,13 +45,16 @@ static int	push(t_stack **source_stack, t_stack **dest_stack)
 	t_stack	*top_of_source;
 
 	if (!source_stack || !dest_stack)
-		ft_print_error("Error while pushing: NULL pointers");
+		error("Error while pushing: NULL pointers");
 	if (!*source_stack)
-		ft_print_error("Error while pushing: Empty stack.");
-	*source_stack = ft_first_node(*source_stack);
-	*dest_stack = ft_first_node(*dest_stack);
+		error("Error while pushing: Empty stack.");
+	
 	top_of_source = *source_stack;
 	*source_stack = (*source_stack)->next;
+
+	//*source_stack = ft_first_node(*source_stack);
+	//*dest_stack = ft_first_node(*dest_stack);
+	
 	if (*source_stack)
 		(*source_stack)->prev = NULL;
 	top_of_source->next = *dest_stack;
@@ -93,20 +97,20 @@ static int	rotate(t_stack **stack, int rotate)
 
 int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //something like ft_format in printf lol
 {
-	ft_printf("%s\n", command);
+	ft_putstr_fd(command, 1);
 	if (ft_strcmp(command, "sa") == 0)
 		return (swap(stack_a));
 	if (ft_strcmp(command, "sb") == 0)
 		return (swap(stack_b));
 	if (ft_strcmp(command, "ss") == 0)
-		return (swap(stack_a) && ft_swap(stack_b));
+		return (swap(stack_a) && swap(stack_b));
 	if (ft_strcmp(command, "pa") == 0)
 		return (push(stack_b, stack_a));
 	if (ft_strcmp(command, "pb") == 0)
 		return (push(stack_a, stack_b));
 	if (ft_strcmp(command, "ra") == 0)
 		return (rotate(stack_a, 0));
-	if (ft_strcmp(command, "rb" == 0))
+	if (ft_strcmp(command, "rb") == 0)
 		return (rotate(stack_b, 0));
 	if (ft_strcmp(command, "rr") == 0)
 		return (rotate(stack_a, 0) && rotate(stack_b, 0));
@@ -124,7 +128,8 @@ void	execute(t_stack **stack_a, t_stack **stack_b, char *command, int times)
 	 while (times > 0)
 	 {
 		if (!instructions(stack_a, stack_b, command))
-			return (error("Error. something"));
-		times--;
+			error("Error. Failed to execute command.");
 	 }
+	times--;
+
 }
