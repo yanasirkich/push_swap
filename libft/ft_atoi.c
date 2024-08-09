@@ -6,14 +6,14 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:41:57 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/05/10 14:42:20 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/09 19:27:26 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *str)
 {
 	int			sign;
-	long int	result;
+	int			result;
 	long int	check;
 
 	sign = 1;

@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/07/30 03:27:56 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/09 20:20:01 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	main (int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		error("Error: not enough arguments.");
+		error("Error: not enough arguments\n");
 	else
 		argument_check(argc, argv, &stack_a);
 	size = ft_lstsize(stack_a);
 	if (size < 2)
 	{
 		ft_lst_free(&stack_a);
-		return (error("Error: not enough elements to sort"));
+		error("Error: not enough elements to sort\n");
 	}
 	push_swap(&stack_a, &stack_b, size); // sort the list
 	ft_lst_free(&stack_a);
@@ -50,11 +50,13 @@ static void argument_check(int argc, char **argv, t_stack **stack_a)
 	if (argc == 2) //single string
 	{
 		argument = ft_split(argv[1], ' ');
+		if (!argument)
+			error("Error. ft_split failed.\n")
 		count = 0;
 		while (argument[count])
 			count++;
 		populate_lst(count, stack_a, argument);
-		free(argument);
+		free_argument();
 	}
 	else //separate strings
 		populate_lst(argc - 1, stack_a, argv + 1); // skip the program name
@@ -68,7 +70,11 @@ static void populate_lst(int count, t_stack **stack_a, char **args)
 	index = 0;
 	while (index < count)
 	{
+		if (if_valid(stack_a, args[index]) == -1)
+			error("Error. The arguments are not valid.\n")
 		new_node = ft_lstnew(ft_atoi(args[index]));
+		if (!new_node)
+			error("Error. ft_lstnew failed.\n")
 		ft_lstadd_back(stack_a, new_node);
 		index++;
 	}
