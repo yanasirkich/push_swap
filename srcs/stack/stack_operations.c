@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/30 03:09:03 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:57:19 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static int	rotate(t_stack **stack, int rotate)
 int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //something like ft_format in printf lol
 {
 	ft_putstr_fd(command, 1);
+	ft_putstr_fd("\n", 1);
 	if (ft_strcmp(command, "sa") == 0)
 		return (swap(stack_a));
 	if (ft_strcmp(command, "sb") == 0)
