@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/12 03:27:01 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/17 00:16:56 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	//a = ft_first_node(a);
 	if (size == 0)
-		error("Error.something idk", stack_a);
+		error("Error.something idk", &stack_a);
 	if (sorted_lst(stack_a)) //check if stack is sorted already
-		error("Error. The list is sorted already.", stack_a);
+		error("Error. The list is sorted already.", &stack_a);
 	if (size == 2)
 		instructions(stack_a, stack_b, "sa");
 	else if (size == 3)
@@ -39,7 +39,7 @@ static void	three_sort(t_stack **stack_a)
 	t_stack	*third;
 
 	if (!stack_a || !*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
-		error("Error. something idk", stack_a);
+		error("Error. something idk", &stack_a);
 	first = *stack_a;
 	second = (*stack_a)->next;
 	third = (*stack_a)->next->next;

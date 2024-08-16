@@ -1,19 +1,19 @@
 #include "push_swap.h"
+#include "libft.h"
+
+int	if_unique(t_stack *node, int number);
+int	push_swap_atoi(char *str, t_stack *stack_a);
 
 int	if_valid(char *str, t_stack *stack_a)
 {
-	t_stack	*node;
 	int	number;
-	int	index;
 	
-	node = stack_a;
-	index = 0;
-	if(!ft_isdigit(str[index])) //dont forget to add this function lo libft
+	//if (str[0] == '\0')
+	//	return (-1);
+	number = push_swap_atoi(str, stack_a);
+	if (if_unique(stack_a, number) == -1)
 		return (-1);
-	number = push_swap_atoi();
-	if_unique(node, number);//when we have number through atoi
-
-
+	return (0);
 }
 
 int	if_unique(t_stack *node, int number)
@@ -29,5 +29,27 @@ int	if_unique(t_stack *node, int number)
 
 int	push_swap_atoi(char *str, t_stack *stack_a)
 {
-	
+	long long	number;
+	int			sign;
+	int			index;
+
+	number = 0;
+	sign = 1;
+	index = 0;
+	if (str[index] == '-' || str[index] == '+')
+	{
+		if (str[index] == '-')
+			sign = -1;
+		index++;
+	}
+	while (str[index])
+	{
+		if (!ft_isdigit(str[index]))
+			return (-1);
+		number = number * 10 + (str[index] - '0');
+		if ((number * sign) > INT_MAX || (number * sign) < INT_MIN)
+			return (-1);
+		index++;
+	}
+	return ((int)(number * sign));
 }

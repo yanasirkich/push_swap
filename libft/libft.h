@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:07:31 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/30 03:27:32 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:10:23 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ size_t len);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *str);
 char	**ft_split(char const *s, char c);
+int		ft_isdigit(int c);
 
 #endif
