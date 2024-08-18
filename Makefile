@@ -6,7 +6,7 @@
 #    By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/02 14:41:58 by ysirkich          #+#    #+#              #
-#    Updated: 2024/07/30 03:34:11 by ysirkich         ###   ########.fr        #
+#    Updated: 2024/08/18 20:25:29 by ysirkich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS =	$(SRCS_DIR)/main.c	\
 		$(STACK_DIR)/stack_operations.c	\
 		$(STACK_DIR)/stack_utils.c	\
 		$(STACK_DIR)/lst_utils.c	\
+		$(STACK_DIR)/validation.c
 
 # Object files
 OBJ = $(SRCS:.c=.o)

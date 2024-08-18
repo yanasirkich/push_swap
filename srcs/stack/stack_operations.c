@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/17 00:16:07 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/17 13:51:45 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	swap(t_stack **stack)
 	t_stack *second;
 
 	if (!(*stack)->next)
-		error("Error while swapping: stack only has 1 element.", &stack);
+		error("Error while swapping: stack only has 1 element.", stack);
 	if (!stack || !*stack)
-		error("Error while swapping: stack pointer or stack is empty.", &stack);
+		error("Error while swapping: stack pointer or stack is empty.", stack);
 	//*stack = ft_first_node(*stack);
 	first = *stack;
 	second = first->next;
@@ -45,9 +45,9 @@ static int	push(t_stack **source_stack, t_stack **dest_stack)
 	t_stack	*top_of_source;
 
 	if (!source_stack || !dest_stack)
-		error("Error while pushing: NULL pointers", &source_stack);
+		error("Error while pushing: NULL pointers", source_stack);
 	if (!*source_stack)
-		error("Error while pushing: Empty stack.", &source_stack);
+		error("Error while pushing: Empty stack.", source_stack);
 	
 	top_of_source = *source_stack;
 	*source_stack = (*source_stack)->next;
@@ -70,9 +70,9 @@ static int	rotate(t_stack **stack, int rotate)
 	t_stack	*last;
 	
 	if (!(*stack)->next)
-		error("Error while rotating: stack only has 1 element.", &stack);
+		error("Error while rotating: stack only has 1 element.", stack);
 	if (!stack || !*stack)
-		error("Error while rotating: stack pointer or stack is empty.", &stack);
+		error("Error while rotating: stack pointer or stack is empty.", stack);
 	//first = ft_first_node(*stack);
 	first = *stack;
 	last = ft_last_node(*stack);
@@ -129,7 +129,7 @@ void	execute(t_stack **stack_a, t_stack **stack_b, char *command, int times)
 	 while (times > 0)
 	 {
 		if (!instructions(stack_a, stack_b, command))
-			error("Error. Failed to execute command.", &stack_a);
+			error("Error. Failed to execute command.", stack_a);
 	 }
 	times--;
 

@@ -1,8 +1,8 @@
 #include "push_swap.h"
 #include "libft.h"
 
-int	if_unique(t_stack *node, int number);
-int	push_swap_atoi(char *str, t_stack *stack_a);
+static int	if_unique(t_stack *node, int number);
+static int	push_swap_atoi(char *str);
 
 int	if_valid(char *str, t_stack *stack_a)
 {
@@ -10,13 +10,13 @@ int	if_valid(char *str, t_stack *stack_a)
 	
 	//if (str[0] == '\0')
 	//	return (-1);
-	number = push_swap_atoi(str, stack_a);
+	number = push_swap_atoi(str);
 	if (if_unique(stack_a, number) == -1)
 		return (-1);
 	return (0);
 }
 
-int	if_unique(t_stack *node, int number)
+static int	if_unique(t_stack *node, int number)
 {
 	while (node)
 	{
@@ -27,7 +27,7 @@ int	if_unique(t_stack *node, int number)
 	return (0);
 }
 
-int	push_swap_atoi(char *str, t_stack *stack_a)
+static int	push_swap_atoi(char *str)
 {
 	long long	number;
 	int			sign;

@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:30 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/08/17 00:11:26 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/18 20:23:22 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void ft_lst_free(t_stack **stack);
 void	push_swap(t_stack **stack_a, t_stack **stack_b, int size);
 int	sorted_lst(t_stack **stack_a);
 void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size);
+int	if_valid(char *str, t_stack *stack_a);
+
 
 int error(char *text, t_stack **stack_a);
 
