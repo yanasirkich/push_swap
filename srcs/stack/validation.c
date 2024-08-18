@@ -11,6 +11,8 @@ int	if_valid(char *str, t_stack *stack_a)
 	//if (str[0] == '\0')
 	//	return (-1);
 	number = push_swap_atoi(str);
+	if (number == -1)
+		return (-1);
 	if (if_unique(stack_a, number) == -1)
 		return (-1);
 	return (0);
