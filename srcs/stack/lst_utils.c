@@ -6,11 +6,12 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:24:57 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/08/18 23:44:32 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:52:58 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	ft_lstsize(t_stack *stack)
 {
@@ -60,13 +61,17 @@ void ft_lst_free(t_stack **stack)
 {
 	t_stack *lptr;
 
-	if (!stack)
+	if (!stack || !*stack){
+		printf("Nothing to free.\n");
 		return ;
-	while (stack)
+	}
+	while (*stack)
 	{
 		lptr = (*stack)->next;
-		free(stack);
-		stack = &lptr;
+		printf("Freeing node with value: %d\n", (*stack)->value);
+		free(*stack);
+		*stack = lptr;
 	}
-	stack = NULL;
+	*stack = NULL;
+	printf("List is now free.\n");
 }

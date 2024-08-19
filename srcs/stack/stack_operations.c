@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/17 13:51:45 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:09:10 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ static int	rotate(t_stack **stack, int rotate)
 	t_stack	*first;
 	t_stack	*last;
 	
-	if (!(*stack)->next)
-		error("Error while rotating: stack only has 1 element.", stack);
 	if (!stack || !*stack)
 		error("Error while rotating: stack pointer or stack is empty.", stack);
+	if (!(*stack)->next)
+		error("Error while rotating: stack only has 1 element.", stack);
 	//first = ft_first_node(*stack);
 	first = *stack;
 	last = ft_last_node(*stack);
@@ -86,11 +86,11 @@ static int	rotate(t_stack **stack, int rotate)
 	}
 	else if (rotate) //reverse rotation. the last node to the front
 	{
-		*stack = last;
 		last->prev->next = NULL;
 		last->prev = NULL;
 		last->next = first;
 		first->prev = last;
+		*stack = last;
 	}
 	return (0);
 }
@@ -115,12 +115,12 @@ int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //somethin
 		return (rotate(stack_b, 0));
 	if (ft_strcmp(command, "rr") == 0)
 		return (rotate(stack_a, 0) && rotate(stack_b, 0));
-	if (ft_strcmp(command, "rra"))
+	if (ft_strcmp(command, "rra") == 0)
 		return (rotate(stack_a, 1));
-	if (ft_strcmp(command, "rrb"))
+	if (ft_strcmp(command, "rrb") == 0)
 		return (rotate(stack_b, 1));
-	if (ft_strcmp(command, "rrr"))
-		return (rotate(stack_b, 1) && rotate(stack_b, 1));
+	if (ft_strcmp(command, "rrr") == 0)
+		return (rotate(stack_a, 1) && rotate(stack_b, 1));
 	return (0);
 }
 

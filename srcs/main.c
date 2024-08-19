@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/08/18 21:37:38 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:04:15 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main (int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack *stack_b;
-	int	size;
+	int		size;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -79,7 +79,7 @@ static void populate_lst(int count, t_stack **stack_a, char **args)
 
 int error(char *text, t_stack **stack_a)
 {
-	if (stack_a)
+	if (stack_a || *stack_a)
 	{
 		ft_putstr_fd(text, 1);
 		ft_lst_free(stack_a);
