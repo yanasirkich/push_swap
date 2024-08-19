@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/19 19:09:10 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/19 21:04:25 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,19 @@ static int	swap(t_stack **stack)
 	t_stack *first;
 	t_stack *second;
 
-	if (!(*stack)->next)
-		error("Error while swapping: stack only has 1 element.", stack);
 	if (!stack || !*stack)
 		error("Error while swapping: stack pointer or stack is empty.", stack);
+	if (!(*stack)->next)
+		error("Error while swapping: stack only has 1 element.", stack);
 	//*stack = ft_first_node(*stack);
 	first = *stack;
 	second = first->next;
-	if (!first || !second)
-		error("Error while swapping.", stack);
+	first->next = second->next;
 	if (second->next)
 		second->next->prev = first;
-	first->next = second->next;
-	first->prev = second;
-	second->next = first;
 	second->prev = first->prev;
+	second->next = first;
+	first->prev = second;
 	if (second->prev)
 		second->prev->next = second;
 	else
@@ -101,26 +99,28 @@ int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //somethin
 	ft_putstr_fd("\n", 1);
 	if (ft_strcmp(command, "sa") == 0)
 		return (swap(stack_a));
-	if (ft_strcmp(command, "sb") == 0)
+	else if (ft_strcmp(command, "sb") == 0)
 		return (swap(stack_b));
-	if (ft_strcmp(command, "ss") == 0)
+	else if (ft_strcmp(command, "ss") == 0)
 		return (swap(stack_a) && swap(stack_b));
-	if (ft_strcmp(command, "pa") == 0)
+	else if (ft_strcmp(command, "pa") == 0)
 		return (push(stack_b, stack_a));
-	if (ft_strcmp(command, "pb") == 0)
+	else if (ft_strcmp(command, "pb") == 0)
 		return (push(stack_a, stack_b));
-	if (ft_strcmp(command, "ra") == 0)
+	else if (ft_strcmp(command, "ra") == 0)
 		return (rotate(stack_a, 0));
-	if (ft_strcmp(command, "rb") == 0)
+	else if (ft_strcmp(command, "rb") == 0)
 		return (rotate(stack_b, 0));
-	if (ft_strcmp(command, "rr") == 0)
+	else if (ft_strcmp(command, "rr") == 0)
 		return (rotate(stack_a, 0) && rotate(stack_b, 0));
-	if (ft_strcmp(command, "rra") == 0)
+	else if (ft_strcmp(command, "rra") == 0)
 		return (rotate(stack_a, 1));
-	if (ft_strcmp(command, "rrb") == 0)
+	else if (ft_strcmp(command, "rrb") == 0)
 		return (rotate(stack_b, 1));
-	if (ft_strcmp(command, "rrr") == 0)
+	else if (ft_strcmp(command, "rrr") == 0)
 		return (rotate(stack_a, 1) && rotate(stack_b, 1));
+	else
+		error("Error. Operation failed.\n", stack_a);
 	return (0);
 }
 
