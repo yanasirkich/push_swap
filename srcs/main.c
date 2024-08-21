@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/08/19 19:04:15 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:10:11 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,13 @@ static void populate_lst(int count, t_stack **stack_a, char **args)
 
 int error(char *text, t_stack **stack_a)
 {
-	if (stack_a || *stack_a)
+	if (stack_a && *stack_a)
 	{
 		ft_putstr_fd(text, 1);
 		ft_lst_free(stack_a);
-		//*stack_a = NULL;
-		return (EXIT_FAILURE);
+		*stack_a = NULL;
 	}
-	return (0);
+	else
+		ft_putstr_fd(text, 1);
+	exit(EXIT_FAILURE);
 }

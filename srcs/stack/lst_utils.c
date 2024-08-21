@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:24:57 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/08/19 18:52:58 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/19 21:37:46 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,5 @@ void ft_lst_free(t_stack **stack)
 		free(*stack);
 		*stack = lptr;
 	}
-	*stack = NULL;
 	printf("List is now free.\n");
 }

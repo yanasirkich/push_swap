@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:30 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/08/18 23:46:00 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:39:52 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_stack
 {
 	int	value;
+	int	index;
 	struct	s_stack	*next;
 	struct s_stack	*prev;
 }   t_stack;
@@ -35,7 +36,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size);
 int	sorted_lst(t_stack **stack_a);
 void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size);
 int	if_valid(char *str, t_stack *stack_a);
-
+void	assign_indices(t_stack **stack, int size);
 
 int error(char *text, t_stack **stack_a);
 
