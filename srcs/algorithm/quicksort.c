@@ -6,14 +6,14 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:57:40 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/25 18:33:59 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/01 17:30:22 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		partition(int *array, int low, int high);
-void	swap(int *a,int *b);
+static int		partition(int *array, int low, int high);
+static void	swap(int *a,int *b);
 
 void	quicksort(int *array, int low, int high)
 {
@@ -27,7 +27,7 @@ void	quicksort(int *array, int low, int high)
 	}
 }
 
-int	partition(int *array, int low, int high)
+ static int	partition(int *array, int low, int high)
 {
 	int	pivot;
 	int	index; //the next smaller element
@@ -41,7 +41,7 @@ int	partition(int *array, int low, int high)
 		if (array[current_element] <= pivot)
 		{
 			index++;
-			swap(array[index], array[current_element]);
+			swap(&array[index], &array[current_element]);
 		}
 		current_element++;
 	}
@@ -49,7 +49,7 @@ int	partition(int *array, int low, int high)
 	return (index + 1);
 }
 
-void	swap(int *a,int *b)
+static void	swap(int *a,int *b)
 {
 	int	temp;
 

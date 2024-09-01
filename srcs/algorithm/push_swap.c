@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/22 01:43:36 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/01 17:23:17 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 		error("Error. Size is 0\n", stack_a);
 	if (sorted_lst(stack_a) == 1) //check if stack is sorted already
 		error("Error. The list is sorted already.\n", stack_a);
-	assign_indices(*stack_a, size);
+	assign_indices(stack_a, size);
 	if (size == 2)
 		instructions(stack_a, stack_b, "sa");
 	else if (size == 3)
@@ -83,5 +83,22 @@ static void	radix_sort(t_stack **stack_a, t_stack **stack_b, int size)
 
 	maximum_bits = 0;
 	maximum_number = size - 1;
-	//the maximum number of bits needed
+	while ((maximum_number >> maximum_bits) != 0) //the number of bits needed to represent the largest number
+		maximum_bits++;
+	index1 = 0;
+	while (index1 < maximum_bits)
+	{
+		index2 = 0;
+		while (index2 < size)
+		{
+			if (((*stack_a)->index >> index1) & 1) //the current bit is 1
+				instructions(stack_a, stack_b, "ra"); //stack_a upwards
+			else
+				instructions(stack_a, stack_b, "pb"); // push from stack_a to stack_b
+			index2++;
+		}
+		while (*stack_b)
+			instructions(stack_a, stack_b, "pa");
+		index1++;
+	}
 }

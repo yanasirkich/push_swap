@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:30 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/08/21 15:39:52 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/01 17:25:00 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	sorted_lst(t_stack **stack_a);
 void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size);
 int	if_valid(char *str, t_stack *stack_a);
 void	assign_indices(t_stack **stack, int size);
+void	quicksort(int *array, int low, int high);
 
 int error(char *text, t_stack **stack_a);
 

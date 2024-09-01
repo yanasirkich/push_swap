@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/19 21:04:25 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/01 18:59:34 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ void	execute(t_stack **stack_a, t_stack **stack_b, char *command, int times)
 	 {
 		if (!instructions(stack_a, stack_b, command))
 			error("Error. Failed to execute command.", stack_a);
+		times--;
 	 }
-	times--;
-
 }

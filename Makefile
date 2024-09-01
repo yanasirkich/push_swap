@@ -6,7 +6,7 @@
 #    By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/02 14:41:58 by ysirkich          #+#    #+#              #
-#    Updated: 2024/08/18 20:25:29 by ysirkich         ###   ########.fr        #
+#    Updated: 2024/09/01 17:26:40 by ysirkich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,11 @@ STACK_DIR = $(SRCS_DIR)/stack
 SRCS =	$(SRCS_DIR)/main.c	\
 		$(ALGORITHM_DIR)/push_swap.c	\
 		$(ALGORITHM_DIR)/sort_utils.c	\
+		$(ALGORITHM_DIR)/quicksort.c	\
 		$(STACK_DIR)/stack_operations.c	\
 		$(STACK_DIR)/stack_utils.c	\
 		$(STACK_DIR)/lst_utils.c	\
-		$(STACK_DIR)/validation.c
+		$(STACK_DIR)/validation.c	\
 
 # Object files
 OBJ = $(SRCS:.c=.o)

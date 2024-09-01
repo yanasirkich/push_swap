@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/21 20:06:46 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/01 17:24:13 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	assign_indices(t_stack **stack, int size)
 	int *array;
 	int	index;
 
-	current_node = stack;
+	current_node = *stack;
 	array = malloc(size * sizeof(int));//array to store values
 	index = 0;
 	while (current_node)
@@ -77,7 +77,7 @@ void	assign_indices(t_stack **stack, int size)
 		current_node = current_node->next;
 	}
 	quicksort(array, 0, size - 1);//sorting array
-	current_node = stack;
+	current_node = *stack;
 	while (current_node)
 	{
 		index = 0;
