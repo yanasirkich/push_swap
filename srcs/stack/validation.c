@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:57:51 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/08/25 16:57:53 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/03 01:38:08 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	if_valid(char *str, t_stack *stack_a)
 {
 	int	number;
 	
-	//if (str[0] == '\0')
-	//	return (-1);
+	if (str[0] == '\0')
+		return (-1);
 	number = push_swap_atoi(str);
 	if (number == -1)
 		return (-1);
