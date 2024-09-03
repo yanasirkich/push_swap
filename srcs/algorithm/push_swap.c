@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/01 17:23:17 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/03 21:39:01 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,27 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 		radix_sort(stack_a, stack_b, size);
 }
 
-static void	three_sort(t_stack **stack_a)
-{ 
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*third;
+static void three_sort(t_stack **stack_a) {
+    t_stack *first = *stack_a;
+    t_stack *second = (*stack_a)->next;
+    t_stack *third = (*stack_a)->next->next;
 
-	if (!stack_a || !*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
-		error("Error while sorting 3 elements.\n", stack_a);
-	first = *stack_a;
-	second = (*stack_a)->next;
-	third = (*stack_a)->next->next;
-	if (first->value > second->value && second->value > third->value)
+    if (first->value > second->value && second->value < third->value && third->value > first->value) 
+        instructions(stack_a, NULL, "sa");  // Case for "2 1 3"
+    else if (first->value > second->value && second->value > third->value)
 	{
-		instructions(stack_a, NULL, "sa");
-		instructions(stack_a, NULL, "rra");
+        instructions(stack_a, NULL, "sa");
+        instructions(stack_a, NULL, "rra"); // Case for "3 2 1"
 	}
-	else if (first->value > third->value && third->value > second->value)
-		instructions(stack_a, NULL, "ra");
-	else if (second->value > first->value && first->value > third->value)
-		instructions(stack_a, NULL, "sa");
-	else if (second->value > third->value && third->value > first->value)
+    else if (first->value > second->value && second->value < third->value && third->value < first->value) 
+        instructions(stack_a, NULL, "ra");  // Case for "2 3 1"
+    else if (first->value < second->value && second->value > third->value && third->value > first->value) 
 	{
-		instructions(stack_a, NULL, "sa");
-		instructions(stack_a, NULL, "ra");
+        instructions(stack_a, NULL, "sa");
+        instructions(stack_a, NULL, "ra");  // Case for "1 3 2"
 	}
-	else if (third->value > first->value && first->value > second->value)
-		instructions(stack_a, NULL, "rra");
+    else if (first->value < second->value && second->value > third->value && third->value < first->value) 
+        instructions(stack_a, NULL, "rra"); // Case for "3 1 2"
 }
 
 static void	small_sort(t_stack **a, t_stack **b, int size)
