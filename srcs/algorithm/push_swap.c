@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/03 21:39:01 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:14:15 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,47 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 }
 
 static void three_sort(t_stack **stack_a) {
-    t_stack *first = *stack_a;
-    t_stack *second = (*stack_a)->next;
-    t_stack *third = (*stack_a)->next->next;
+    t_stack *first;
+    t_stack *second;
+    t_stack *third;
 
+	first = *stack_a;
+	second = (*stack_a)->next;
+	third = (*stack_a)->next->next;
     if (first->value > second->value && second->value < third->value && third->value > first->value) 
-        instructions(stack_a, NULL, "sa");  // Case for "2 1 3"
+        instructions(stack_a, NULL, "sa");
     else if (first->value > second->value && second->value > third->value)
 	{
         instructions(stack_a, NULL, "sa");
-        instructions(stack_a, NULL, "rra"); // Case for "3 2 1"
+        instructions(stack_a, NULL, "rra"); 
 	}
     else if (first->value > second->value && second->value < third->value && third->value < first->value) 
-        instructions(stack_a, NULL, "ra");  // Case for "2 3 1"
+        instructions(stack_a, NULL, "ra"); 
     else if (first->value < second->value && second->value > third->value && third->value > first->value) 
 	{
         instructions(stack_a, NULL, "sa");
-        instructions(stack_a, NULL, "ra");  // Case for "1 3 2"
+        instructions(stack_a, NULL, "ra");  
 	}
     else if (first->value < second->value && second->value > third->value && third->value < first->value) 
-        instructions(stack_a, NULL, "rra"); // Case for "3 1 2"
+        instructions(stack_a, NULL, "rra"); 
 }
 
 static void	small_sort(t_stack **a, t_stack **b, int size)
 {// push 2 smallest number to stack b, sort the stack a, push back to stack a
 	if (size == 4)
-		push_smallest(a, b, 1);
-	else if (size == 5)
-		push_smallest(a, b, 2);
-	three_sort(a);
-	if (size == 5)
+	{
+		push_smallest(a, b, size);
+		three_sort(a);
 		instructions(a, b, "pa");
-	instructions(a, b, "pa");
+	}
+	else if (size == 5)
+	{
+		push_smallest(a, b, size);
+		push_smallest(a, b, size - 1);
+		three_sort(a);
+		instructions(a, b, "pa");
+		instructions(a, b, "pa");
+	}
 }
 
 static void	radix_sort(t_stack **stack_a, t_stack **stack_b, int size)
@@ -77,7 +86,7 @@ static void	radix_sort(t_stack **stack_a, t_stack **stack_b, int size)
 
 	maximum_bits = 0;
 	maximum_number = size - 1;
-	while ((maximum_number >> maximum_bits) != 0) //the number of bits needed to represent the largest number
+	while ((maximum_number >> maximum_bits)) //the number of bits needed to represent the largest number
 		maximum_bits++;
 	index1 = 0;
 	while (index1 < maximum_bits)

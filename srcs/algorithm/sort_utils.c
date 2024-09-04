@@ -6,11 +6,12 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/01 17:24:13 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:28:54 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
 int	sorted_lst(t_stack **stack_a)
 { //checks if the list is sorted in in ascending order
@@ -38,6 +39,7 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 	current = *stack_a;
 	index = 0;
 	min_index = 0;
+	min_value = INT_MAX;
 	while (current)
 	{ //the index of the smallest element in the stack
 		if (current->value < min_value)
