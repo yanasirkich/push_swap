@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/08/21 14:10:11 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:04:02 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	main (int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		error("Error: not enough arguments\n", &stack_a);
+		error("Error\n", &stack_a);
 	else
 		argument_check(argc, argv, &stack_a);
 	size = ft_lstsize(stack_a);
 	if (size < 2)
-		error("Error: not enough elements to sort\n", &stack_a);
+		error("Error\n", &stack_a);
 	push_swap(&stack_a, &stack_b, size); // sort the list
 	ft_lst_free(&stack_a);
 	ft_lst_free(&stack_b);
@@ -48,7 +48,7 @@ static void argument_check(int argc, char **argv, t_stack **stack_a)
 	{
 		argument = ft_split(argv[1], ' ');
 		if (!argument)
-			error("Error. ft_split failed.\n", stack_a);
+			error("Error\n", stack_a);
 		count = 0;
 		while (argument[count])
 			count++;
@@ -68,10 +68,10 @@ static void populate_lst(int count, t_stack **stack_a, char **args)
 	while (index < count)
 	{
 		if (if_valid(args[index], *stack_a) == -1)
-			error("Error. The arguments are not valid.\n", stack_a);
+			error("Error\n", stack_a);
 		new_node = ft_lstnew(ft_atoi(args[index]));
 		if (!new_node)
-			error("Error. ft_lstnew failed.\n", stack_a);
+			error("Error\n", stack_a);
 		ft_lstadd_back(stack_a, new_node);
 		index++;
 	}
@@ -81,11 +81,11 @@ int error(char *text, t_stack **stack_a)
 {
 	if (stack_a && *stack_a)
 	{
-		ft_putstr_fd(text, 1);
+		ft_putstr_fd(text, 2);
 		ft_lst_free(stack_a);
 		*stack_a = NULL;
 	}
 	else
-		ft_putstr_fd(text, 1);
+		ft_putstr_fd(text, 2);
 	exit(EXIT_FAILURE);
 }

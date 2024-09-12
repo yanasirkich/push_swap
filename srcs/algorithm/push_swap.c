@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/04 18:14:15 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:12:14 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ static void	radix_sort(t_stack **stack_a, t_stack **stack_b, int size);
 
 void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	//a = ft_first_node(a);
 	if (size == 0)
-		error("Error. Size is 0\n", stack_a);
+		error("Error\n", stack_a);
 	if (sorted_lst(stack_a) == 1) //check if stack is sorted already
-		error("Error. The list is sorted already.\n", stack_a);
+		error(NULL, stack_a);
 	assign_indices(stack_a, size);
 	if (size == 2)
 		instructions(stack_a, stack_b, "sa");

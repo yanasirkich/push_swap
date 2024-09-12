@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/04 18:06:08 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:08:06 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ static int	swap(t_stack **stack)
 	t_stack *first;
 	t_stack *second;
 
-	if (!stack || !*stack)
-		error("Error while swapping: stack pointer or stack is empty.", stack);
-	if (!(*stack)->next)
-		error("Error while swapping: stack only has 1 element.", stack);
-	//*stack = ft_first_node(*stack);
+	if (!stack || !*stack || !(*stack)->next)
+		error("Error\n", stack);
 	first = *stack;
 	second = first->next;
 	first->next = second->next;
@@ -42,17 +39,10 @@ static int	push(t_stack **source_stack, t_stack **dest_stack)
 {
 	t_stack	*top_of_source;
 
-	if (!source_stack || !dest_stack)
-		error("Error while pushing: NULL pointers", source_stack);
-	if (!*source_stack)
-		error("Error while pushing: Empty stack.", source_stack);
-	
+	if (!source_stack || !dest_stack || !*source_stack)
+		error("Error\n", source_stack);
 	top_of_source = *source_stack;
 	*source_stack = (*source_stack)->next;
-
-	//*source_stack = ft_first_node(*source_stack);
-	//*dest_stack = ft_first_node(*dest_stack);
-	
 	if (*source_stack)
 		(*source_stack)->prev = NULL;
 	top_of_source->next = *dest_stack;
@@ -67,11 +57,8 @@ static int	rotate(t_stack **stack, int rotate)
 	t_stack	*first;
 	t_stack	*last;
 	
-	if (!stack || !*stack)
-		error("Error while rotating: stack pointer or stack is empty.", stack);
-	if (!(*stack)->next)
-		error("Error while rotating: stack only has 1 element.", stack);
-	//first = ft_first_node(*stack);
+	if (!stack || !*stack || !(*stack)->next)
+		error("Error\n", stack);
 	first = *stack;
 	last = ft_last_node(*stack);
 	if (!rotate) //forward rotation. the first node to the end
@@ -122,16 +109,6 @@ int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //somethin
 	else if (ft_strcmp(command, "rrr") == 0)
 		return (rotate(stack_a, 1) & rotate(stack_b, 1));
 	else
-		error("Error. Invalid operation.\n", stack_a);
+		error("Error\n", stack_a);
 		return (0);
-}
-
-void	execute(t_stack **stack_a, t_stack **stack_b, char *command, int times)
-{ //do the same command multiple times
-	 while (times > 0)
-	 {
-		if (!instructions(stack_a, stack_b, command))
-			error("Error. Failed to execute command.", stack_a);
-		times--;
-	 }
 }

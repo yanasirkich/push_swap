@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:57:51 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/03 01:38:08 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:11:50 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static int	push_swap_atoi(char *str)
 	index = 0;
 	if (str[index] == '-' || str[index] == '+')
 	{
+		if (!ft_isdigit(str[index + 1]))
+    		return (-1);
 		if (str[index] == '-')
 			sign = -1;
 		index++;

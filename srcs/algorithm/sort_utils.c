@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/03 22:28:54 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:05:52 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	sorted_lst(t_stack **stack_a)
 	t_stack	*top_node;
 
 	if (!stack_a || !*stack_a)
-		return (error("Error: Stack pointer or stack is empty.\n", stack_a));
+		return (error("Error\n", stack_a));
 	top_node = *stack_a;
 	while (top_node->next)
 	{
