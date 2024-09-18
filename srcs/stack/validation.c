@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:57:51 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/12 19:11:50 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:58:31 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	if_valid(char *str, t_stack *stack_a)
 {
 	int	number;
 	
-	if (str[0] == '\0')
+	if (!str || str[0] == '\0')
 		return (-1);
 	number = push_swap_atoi(str);
 	if (number == -1)
@@ -67,5 +67,7 @@ static int	push_swap_atoi(char *str)
 			return (-1);
 		index++;
 	}
+	if (number == 0 && str[0] == '-')
+        return (-1);
 	return ((int)(number * sign));
 }
