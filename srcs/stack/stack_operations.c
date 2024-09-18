@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/12 19:08:06 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:45:11 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ static int	rotate(t_stack **stack, int rotate)
 
 int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //something like ft_format in printf lol
 {
-	//if (!stack_a)
-		//error("Error. The stack is empty", stack_a);
+	if (!command)
+		error("Error\n", stack_a);
+	if (!stack_a || !(*stack_a) || !(*stack_a)->next)
+		error("Error\n", stack_a);
 	ft_putstr_fd(command, 1);
 	ft_putstr_fd("\n", 1);
 	if (ft_strcmp(command, "sa") == 0)
@@ -91,7 +93,7 @@ int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //somethin
 	else if (ft_strcmp(command, "sb") == 0)
 		return (swap(stack_b));
 	else if (ft_strcmp(command, "ss") == 0)
-		return (swap(stack_a) & swap(stack_b));
+		return (swap(stack_a) && swap(stack_b));
 	else if (ft_strcmp(command, "pa") == 0)
 		return (push(stack_b, stack_a));
 	else if (ft_strcmp(command, "pb") == 0)
@@ -107,8 +109,9 @@ int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //somethin
 	else if (ft_strcmp(command, "rrb") == 0)
 		return (rotate(stack_b, 1));
 	else if (ft_strcmp(command, "rrr") == 0)
-		return (rotate(stack_a, 1) & rotate(stack_b, 1));
+		return (rotate(stack_a, 1) && rotate(stack_b, 1));
 	else
 		error("Error\n", stack_a);
-		return (0);
+	return (0);
 }
+
