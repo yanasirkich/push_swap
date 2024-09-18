@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/18 12:45:11 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:28:08 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ static int	rotate(t_stack **stack, int rotate)
 
 int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //something like ft_format in printf lol
 {
-	if (!command)
-		error("Error\n", stack_a);
-	if (!stack_a || !(*stack_a) || !(*stack_a)->next)
+	if (valid_instructions(stack_a, stack_b, command) == -1)
 		error("Error\n", stack_a);
 	ft_putstr_fd(command, 1);
 	ft_putstr_fd("\n", 1);

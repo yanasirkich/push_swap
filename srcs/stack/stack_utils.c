@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utilsis.c                                    :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:25:50 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/07/08 13:41:01 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:35:35 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
 t_stack *ft_first_node(t_stack *node)
 {
@@ -28,4 +29,18 @@ t_stack *ft_last_node(t_stack *node)
 	while (node->next)
 		node = node->next;
 	return (node);
+}
+
+int valid_instructions(t_stack **stack_a, t_stack **stack_b, char *command)
+{
+	if (!command)
+		return (-1);
+	if (!stack_a || !stack_b)
+		return (-1);
+	if ((ft_strcmp(command, "ra") == 0 || ft_strcmp(command, "rra") == 0 || ft_strcmp(command, "rr") == 0) && !(*stack_a))
+        return (-1);
+    if ((ft_strcmp(command, "pb") == 0 || ft_strcmp(command, "pa") == 0) && (!(*stack_a) || !(*stack_b)))
+        return (-1);
+	else
+		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/18 12:33:49 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:09:30 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	sorted_lst(t_stack **stack_a)
 	t_stack	*top_node;
 
 	if (!stack_a || !*stack_a)
-		return (error("Error\n", stack_a));
+		error("Error\n", stack_a);
 	top_node = *stack_a;
 	while (top_node->next)
 	{
@@ -65,18 +65,6 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 			instructions(stack_a, NULL, "rra");
 	}
 	instructions(stack_a, stack_b, "pb");
-	/*/the smallest element to the top and push to stack
-		if (min_index <= size / 2)
-		{
-			while (min_index-- > 0)
-				instructions(stack_a, stack_b, "ra");
-		}
-		else
-			{
-				while(min_index++ < size)
-					instructions(stack_a, stack_b, "rra");
-			}
-			instructions(stack_a, stack_b, "pb");*/
 }
 
 void	assign_indices(t_stack **stack, int size)
