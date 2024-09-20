@@ -6,14 +6,14 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:57:40 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/01 17:30:22 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 17:02:02 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int		partition(int *array, int low, int high);
-static void	swap(int *a,int *b);
+static void		swap(int *a, int *b);
 
 void	quicksort(int *array, int low, int high)
 {
@@ -21,16 +21,16 @@ void	quicksort(int *array, int low, int high)
 
 	if (high > low)
 	{
-		pivot = partition(array, low, high);//returns the index of the pivot after partitioning
+		pivot = partition(array, low, high);
 		quicksort(array, low, pivot - 1);
 		quicksort(array, pivot + 1, high);
 	}
 }
 
- static int	partition(int *array, int low, int high)
+static int	partition(int *array, int low, int high)
 {
 	int	pivot;
-	int	index; //the next smaller element
+	int	index;
 	int	current_element;
 
 	pivot = array[high];
@@ -45,11 +45,11 @@ void	quicksort(int *array, int low, int high)
 		}
 		current_element++;
 	}
-	swap(&array[index + 1], &array[high]);//pivot to the correct position
+	swap(&array[index + 1], &array[high]);
 	return (index + 1);
 }
 
-static void	swap(int *a,int *b)
+static void	swap(int *a, int *b)
 {
 	int	temp;
 

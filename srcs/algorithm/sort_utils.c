@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/18 13:09:30 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 17:06:02 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <limits.h>
 
 int	sorted_lst(t_stack **stack_a)
-{ //checks if the list is sorted in in ascending order
+{
 	t_stack	*top_node;
 
 	if (!stack_a || !*stack_a)
@@ -23,10 +23,10 @@ int	sorted_lst(t_stack **stack_a)
 	while (top_node->next)
 	{
 		if (top_node->value > top_node->next->value)
-			return (0); //not sorted
+			return (0);
 		top_node = top_node->next;
 	}
-	return (1); //sorted
+	return (1);
 }
 
 void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
@@ -34,7 +34,7 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 	int		index;
 	int		min_index;
 	int		min_value;
-	t_stack *current;
+	t_stack	*current;
 	int		ra_moves;
 	int		rra_moves;
 
@@ -43,7 +43,7 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 	min_index = 0;
 	min_value = INT_MAX;
 	while (current)
-	{ //the index of the smallest element in the stack
+	{
 		if (current->value < min_value)
 		{
 			min_value = current->value;
@@ -61,7 +61,7 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 	}
 	else
 	{
-		while (rra_moves-- >  0)
+		while (rra_moves-- > 0)
 			instructions(stack_a, NULL, "rra");
 	}
 	instructions(stack_a, stack_b, "pb");
@@ -70,18 +70,18 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 void	assign_indices(t_stack **stack, int size)
 {
 	t_stack	*current_node;
-	int *array;
-	int	index;
+	int		*array;
+	int		index;
 
 	current_node = *stack;
-	array = malloc(size * sizeof(int));//array to store values
+	array = malloc(size * sizeof(int));
 	index = 0;
 	while (current_node)
 	{
 		array[index++] = current_node->value;
 		current_node = current_node->next;
 	}
-	quicksort(array, 0, size - 1);//sorting array
+	quicksort(array, 0, size - 1);
 	current_node = *stack;
 	while (current_node)
 	{
@@ -91,7 +91,7 @@ void	assign_indices(t_stack **stack, int size)
 			if (current_node->value == array[index])
 			{
 				current_node->index = index;
-				break;
+				break ;
 			}
 			index++;
 		}

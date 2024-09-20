@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:55:37 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/20 16:22:37 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:44:37 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		nw;
 
-	if (!s)
-		return (NULL);
 	nw = ft_wordcount(s, c);
 	array = (char **)malloc(sizeof(char *) * (nw + 1));
 	if (!array)

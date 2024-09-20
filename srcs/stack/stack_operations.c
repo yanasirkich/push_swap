@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/20 16:28:49 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 17:13:43 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static int	swap(t_stack **stack)
 {
-	t_stack *first;
-	t_stack *second;
+	t_stack	*first;
+	t_stack	*second;
 
 	if (!stack || !*stack || !(*stack)->next)
 		error("Error\n", stack);
@@ -56,12 +56,12 @@ static int	rotate(t_stack **stack, int rotate)
 {
 	t_stack	*first;
 	t_stack	*last;
-	
+
 	if (!stack || !*stack || !(*stack)->next)
 		error("Error\n", stack);
 	first = *stack;
 	last = ft_last_node(*stack);
-	if (!rotate) //forward rotation. the first node to the end
+	if (!rotate)
 	{
 		*stack = first->next;
 		(*stack)->prev = NULL;
@@ -69,7 +69,7 @@ static int	rotate(t_stack **stack, int rotate)
 		last->next = first;
 		first->prev = last;
 	}
-	else if (rotate) //reverse rotation. the last node to the front
+	else if (rotate)
 	{
 		last->prev->next = NULL;
 		last->prev = NULL;
@@ -80,7 +80,7 @@ static int	rotate(t_stack **stack, int rotate)
 	return (0);
 }
 
-int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //something like ft_format in printf lol
+int	instructions(t_stack **stack_a, t_stack **stack_b, char *command)
 {
 	if (valid_instructions(stack_a, stack_b, command) == -1)
 		error("Error\n", stack_a);
@@ -112,4 +112,3 @@ int	instructions(t_stack **stack_a, t_stack **stack_b, char *command) //somethin
 		error("Error\n", stack_a);
 	return (0);
 }
-

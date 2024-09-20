@@ -6,11 +6,12 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/18 12:45:56 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:58:34 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 static void	three_sort(t_stack **stack_a);
 static void	small_sort(t_stack **a, t_stack **b, int size);
 static void	radix_sort(t_stack **stack_a, t_stack **stack_b, int size);
@@ -19,7 +20,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	if (size == 0)
 		error("Error\n", stack_a);
-	if (sorted_lst(stack_a) == 1) //check if stack is sorted already
+	if (sorted_lst(stack_a) == 1)
 		error(NULL, stack_a);
 	assign_indices(stack_a, size);
 	if (size == 2)
@@ -32,34 +33,39 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 		radix_sort(stack_a, stack_b, size);
 }
 
-static void three_sort(t_stack **stack_a) {
-    t_stack *first;
-    t_stack *second;
-    t_stack *third;
+static void	three_sort(t_stack **stack_a)
+{
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
 
 	first = *stack_a;
 	second = (*stack_a)->next;
 	third = (*stack_a)->next->next;
-    if (first->value > second->value && second->value < third->value && third->value > first->value) 
-        instructions(stack_a, NULL, "sa");
-    else if (first->value > second->value && second->value > third->value)
+	if (first->value > second->value && second->value < third->value
+		&& third->value > first->value)
+		instructions(stack_a, NULL, "sa");
+	else if (first->value > second->value && second->value > third->value)
 	{
-        instructions(stack_a, NULL, "sa");
-        instructions(stack_a, NULL, "rra"); 
+		instructions(stack_a, NULL, "sa");
+		instructions(stack_a, NULL, "rra");
 	}
-    else if (first->value > second->value && second->value < third->value && third->value < first->value) 
-        instructions(stack_a, NULL, "ra"); 
-    else if (first->value < second->value && second->value > third->value && third->value > first->value) 
+	else if (first->value > second->value && second->value < third->value
+		&& third->value < first->value)
+		instructions(stack_a, NULL, "ra");
+	else if (first->value < second->value && second->value > third->value
+		&& third->value > first->value)
 	{
-        instructions(stack_a, NULL, "sa");
-        instructions(stack_a, NULL, "ra");  
+		instructions(stack_a, NULL, "sa");
+		instructions(stack_a, NULL, "ra");
 	}
-    else if (first->value < second->value && second->value > third->value && third->value < first->value) 
-        instructions(stack_a, NULL, "rra"); 
+	else if (first->value < second->value && second->value > third->value
+		&& third->value < first->value)
+		instructions(stack_a, NULL, "rra");
 }
 
 static void	small_sort(t_stack **a, t_stack **b, int size)
-{// push 2 smallest number to stack b, sort the stack a, push back to stack a
+{
 	if (size == 4)
 	{
 		push_smallest(a, b, size);
@@ -85,7 +91,7 @@ static void	radix_sort(t_stack **stack_a, t_stack **stack_b, int size)
 
 	maximum_bits = 0;
 	maximum_number = size - 1;
-	while ((maximum_number >> maximum_bits)) //the number of bits needed to represent the largest number
+	while ((maximum_number >> maximum_bits))
 		maximum_bits++;
 	index1 = 0;
 	while (index1 < maximum_bits)
@@ -93,10 +99,10 @@ static void	radix_sort(t_stack **stack_a, t_stack **stack_b, int size)
 		index2 = 0;
 		while (index2 < size)
 		{
-			if (((*stack_a)->index >> index1) & 1) //the current bit is 1
-				instructions(stack_a, stack_b, "ra"); //stack_a upwards
+			if (((*stack_a)->index >> index1) & 1)
+				instructions(stack_a, stack_b, "ra");
 			else
-				instructions(stack_a, stack_b, "pb"); // push from stack_a to stack_b
+				instructions(stack_a, stack_b, "pb");
 			index2++;
 		}
 		while (*stack_b)

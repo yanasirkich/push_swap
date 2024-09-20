@@ -6,21 +6,21 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:13 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/09/12 19:04:02 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:48:39 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-static void populate_lst(int count, t_stack **stack_a, char **args);
-static void argument_check(int argc, char **argv, t_stack **stack_a);
-int error(char *text, t_stack **stack_a);
+static void	populate_lst(int count, t_stack **stack_a, char **args);
+static void	argument_check(int argc, char **argv, t_stack **stack_a);
+int			error(char *text, t_stack **stack_a);
 
-int	main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_b;
 	int		size;
 
 	stack_a = NULL;
@@ -32,19 +32,19 @@ int	main (int argc, char **argv)
 	size = ft_lstsize(stack_a);
 	if (size < 2)
 		error("Error\n", &stack_a);
-	push_swap(&stack_a, &stack_b, size); // sort the list
+	push_swap(&stack_a, &stack_b, size);
 	ft_lst_free(&stack_a);
 	ft_lst_free(&stack_b);
 	return (0);
 }
 
-static void argument_check(int argc, char **argv, t_stack **stack_a)
-{ //checks the arguments and populates stack a
-	char **argument;
-	int	count;
+static void	argument_check(int argc, char **argv, t_stack **stack_a)
+{
+	char	**argument;
+	int		count;
 
 	argument = NULL;
-	if (argc == 2) //single string
+	if (argc == 2)
 	{
 		argument = ft_split(argv[1], ' ');
 		if (!argument)
@@ -55,13 +55,13 @@ static void argument_check(int argc, char **argv, t_stack **stack_a)
 		populate_lst(count, stack_a, argument);
 		free(argument);
 	}
-	else //separate strings
-		populate_lst(argc - 1, stack_a, argv + 1); // skip the program name
+	else
+		populate_lst(argc - 1, stack_a, argv + 1);
 }
 
-static void populate_lst(int count, t_stack **stack_a, char **args)
-{ //converts the array of strings into a linked lis
-	int index;
+static void	populate_lst(int count, t_stack **stack_a, char **args)
+{
+	int		index;
 	t_stack	*new_node;
 
 	index = 0;
@@ -77,7 +77,7 @@ static void populate_lst(int count, t_stack **stack_a, char **args)
 	}
 }
 
-int error(char *text, t_stack **stack_a)
+int	error(char *text, t_stack **stack_a)
 {
 	if (stack_a && *stack_a)
 	{

@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:24:57 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/09/03 01:43:13 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 17:12:33 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,16 @@ t_stack	*ft_lstnew(int value)
 	return (new);
 }
 
-void ft_lst_free(t_stack **stack)
+void	ft_lst_free(t_stack **stack)
 {
-	t_stack *lptr;
+	t_stack	*lptr;
 
-	if (!stack || !*stack){
-		//printf("Nothing to free.\n");
+	if (!stack || !*stack)
 		return ;
-	}
 	while (*stack)
 	{
 		lptr = (*stack)->next;
-		//printf("Freeing node with value: %d\n", (*stack)->value);
 		free(*stack);
 		*stack = lptr;
 	}
-	//printf("List is now free.\n");
 }
