@@ -6,7 +6,7 @@
 #    By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/02 14:41:58 by ysirkich          #+#    #+#              #
-#    Updated: 2024/09/01 17:26:40 by ysirkich         ###   ########.fr        #
+#    Updated: 2024/09/20 15:41:41 by ysirkich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = push_swap
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall	-Wextra	-Werror
+CFLAGS = -Wall	-Wextra	-Werror -g
 INCLUDE	=-I. -Iincludes -Ilibft
 
 # Libraries
