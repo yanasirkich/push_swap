@@ -6,12 +6,14 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/20 17:06:02 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:36:27 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
+
+static int	find_min_value(t_stack *stack);
+static int	find_min_index(t_stack *stack, int min_value);
 
 int	sorted_lst(t_stack **stack_a)
 {
@@ -31,27 +33,13 @@ int	sorted_lst(t_stack **stack_a)
 
 void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	int		index;
 	int		min_index;
 	int		min_value;
-	t_stack	*current;
 	int		ra_moves;
 	int		rra_moves;
 
-	current = *stack_a;
-	index = 0;
-	min_index = 0;
-	min_value = INT_MAX;
-	while (current)
-	{
-		if (current->value < min_value)
-		{
-			min_value = current->value;
-			min_index = index;
-		}
-		current = current->next;
-		index++;
-	}
+	min_value = find_min_value(*stack_a);
+	min_index = find_min_index(*stack_a, min_value);
 	ra_moves = min_index;
 	rra_moves = size - min_index;
 	if (ra_moves <= rra_moves)
@@ -65,6 +53,44 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b, int size)
 			instructions(stack_a, NULL, "rra");
 	}
 	instructions(stack_a, stack_b, "pb");
+}
+
+static int	find_min_value(t_stack *stack)
+{
+	int		min_value;
+	t_stack	*current;
+
+	min_value = INT_MAX;
+	current = stack;
+	while (current)
+	{
+		if (current->value < min_value)
+			min_value = current->value;
+		current = current->next;
+	}
+	return (min_value);
+}
+
+static int	find_min_index(t_stack *stack, int min_value)
+{
+	int		index;
+	int		min_index;
+	t_stack	*current;
+
+	index = 0;
+	min_index = -1;
+	current = stack;
+	while (current)
+	{
+		if (current->value == min_value)
+		{
+			min_index = index;
+			break ;
+		}
+		current = current->next;
+		index++;
+	}
+	return (min_index);
 }
 
 void	assign_indices(t_stack **stack, int size)
