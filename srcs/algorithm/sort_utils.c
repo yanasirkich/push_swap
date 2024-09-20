@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:55:27 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/20 19:36:27 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:43:38 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	assign_indices(t_stack **stack, int size)
 	t_stack	*current_node;
 	int		*array;
 	int		index;
+	int		node;
 
 	current_node = *stack;
 	array = malloc(size * sizeof(int));
@@ -111,16 +112,10 @@ void	assign_indices(t_stack **stack, int size)
 	current_node = *stack;
 	while (current_node)
 	{
-		index = 0;
-		while (index < size)
-		{
-			if (current_node->value == array[index])
-			{
-				current_node->index = index;
-				break ;
-			}
-			index++;
-		}
+		node = 0;
+		while (node < size && current_node->value != array[node])
+			node++;
+		current_node->index = node;
 		current_node = current_node->next;
 	}
 	free(array);
