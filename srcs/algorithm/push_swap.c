@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/20 18:17:40 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:09:19 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static void	three_sort(t_stack **stack_a)
 	}
 	else if (first->value > second->value && third->value < first->value)
 		instructions(stack_a, NULL, "ra");
-	else if (first->value < second->value && second->value > third->value)
+	else if (first->value < second->value && second->value > third->value 
+			&& third->value > first->value)
 	{
 		instructions(stack_a, NULL, "sa");
 		instructions(stack_a, NULL, "ra");
