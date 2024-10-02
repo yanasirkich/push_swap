@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:22:54 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/20 17:13:43 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/10/02 21:49:09 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,8 @@ static int	rotate(t_stack **stack, int rotate)
 	return (0);
 }
 
-int	instructions(t_stack **stack_a, t_stack **stack_b, char *command)
+int	execute_command(t_stack **stack_a, t_stack **stack_b, char *command)
 {
-	if (valid_instructions(stack_a, stack_b, command) == -1)
-		error("Error\n", stack_a);
-	ft_putstr_fd(command, 1);
-	ft_putstr_fd("\n", 1);
 	if (ft_strcmp(command, "sa") == 0)
 		return (swap(stack_a));
 	else if (ft_strcmp(command, "sb") == 0)
@@ -109,6 +105,17 @@ int	instructions(t_stack **stack_a, t_stack **stack_b, char *command)
 	else if (ft_strcmp(command, "rrr") == 0)
 		return (rotate(stack_a, 1) && rotate(stack_b, 1));
 	else
+		error("Error\n", stack_a);
+	return (0);
+}
+
+int	instructions(t_stack **stack_a, t_stack **stack_b, char *command)
+{
+	if (valid_instructions(stack_a, stack_b, command) == -1)
+		error("Error\n", stack_a);
+	ft_putstr_fd(command, 1);
+	ft_putstr_fd("\n", 1);
+	if (execute_command(stack_a, stack_b, command) == -1)
 		error("Error\n", stack_a);
 	return (0);
 }

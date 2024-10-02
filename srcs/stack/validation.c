@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:57:51 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/29 17:54:47 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/10/02 21:43:14 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <limits.h>
 
-static int	if_unique(t_stack *node, int number);
+static int			if_unique(t_stack *node, int number);
 static long long	push_swap_atoi(char *str);
 
 int	if_valid(char *str, t_stack *stack_a)
@@ -25,6 +25,8 @@ int	if_valid(char *str, t_stack *stack_a)
 		return (-1);
 	number = push_swap_atoi(str);
 	if (number == LLONG_MAX)
+		return (-1);
+	if (number == 0 && str[0] == '-')
 		return (-1);
 	if (if_unique(stack_a, number) == -1)
 		return (-1);
@@ -68,7 +70,5 @@ static long long	push_swap_atoi(char *str)
 			return (LLONG_MAX);
 		index++;
 	}
-	if (number == 0 && str[0] == '-')
-		return (LLONG_MAX);
 	return ((int)(number * sign));
 }
