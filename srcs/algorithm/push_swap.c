@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/10/02 21:39:10 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/10/02 22:06:08 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,8 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 		radix_sort(stack_a, stack_b, size);
 }
 
-static void	three_sort(t_stack **stack_a)
+void	h3(t_stack **stack_a, t_stack *first, t_stack *second, t_stack *third)
 {
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*third;
-
-	first = *stack_a;
-	second = (*stack_a)->next;
-	third = (*stack_a)->next->next;
 	if (first->value < second->value && second->value < third->value)
 		return ;
 	else if (first->value > second->value && second->value < third->value
@@ -62,6 +55,18 @@ static void	three_sort(t_stack **stack_a)
 		instructions(stack_a, NULL, "ra");
 	else
 		instructions(stack_a, NULL, "rra");
+}
+
+static void	three_sort(t_stack **stack_a)
+{
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
+
+	first = *stack_a;
+	second = (*stack_a)->next;
+	third = (*stack_a)->next->next;
+	h3(stack_a, first, second, third);
 }
 
 static void	small_sort(t_stack **a, t_stack **b, int size)
