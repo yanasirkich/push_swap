@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:28:01 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/09/29 19:09:19 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/10/02 20:28:50 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,16 @@ static void	three_sort(t_stack **stack_a)
 	first = *stack_a;
 	second = (*stack_a)->next;
 	third = (*stack_a)->next->next;
-	if (first->value > second->value && second->value < third->value
-		&& third->value > first->value)
+
+	if (first->value < second->value && second->value < third->value)
+		return;
+	else if (first->value > second->value && second->value < third->value && first->value < third->value)
 		instructions(stack_a, NULL, "sa");
+	else if (first->value < second->value && third->value < second->value && third->value > first->value)
+	{
+		instructions(stack_a, NULL, "sa");
+		instructions(stack_a, NULL, "ra");
+	}
 	else if (first->value > second->value && second->value > third->value)
 	{
 		instructions(stack_a, NULL, "sa");
@@ -52,16 +59,9 @@ static void	three_sort(t_stack **stack_a)
 	}
 	else if (first->value > second->value && third->value < first->value)
 		instructions(stack_a, NULL, "ra");
-	else if (first->value < second->value && second->value > third->value 
-			&& third->value > first->value)
-	{
-		instructions(stack_a, NULL, "sa");
-		instructions(stack_a, NULL, "ra");
-	}
 	else
 		instructions(stack_a, NULL, "rra");
 }
-
 static void	small_sort(t_stack **a, t_stack **b, int size)
 {
 	if (size == 4)
