@@ -6,7 +6,7 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:23:30 by ysirkich@st       #+#    #+#             */
-/*   Updated: 2024/09/20 19:32:59 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:56:59 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "./libft/libft.h"
+
 
 typedef struct s_stack
 {

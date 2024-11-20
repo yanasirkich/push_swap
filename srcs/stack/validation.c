@@ -6,13 +6,11 @@
 /*   By: ysirkich <ysirkich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:57:51 by ysirkich          #+#    #+#             */
-/*   Updated: 2024/10/02 21:43:14 by ysirkich         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:55:57 by ysirkich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
-#include <limits.h>
 
 static int			if_unique(t_stack *node, int number);
 static long long	push_swap_atoi(char *str);
